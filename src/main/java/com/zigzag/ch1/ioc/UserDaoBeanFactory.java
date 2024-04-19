@@ -1,5 +1,7 @@
-package com.zigzag.ch1.test01;
+package com.zigzag.ch1.ioc;
 
+import com.zigzag.ch1.ioc.dao.UserDao;
+import com.zigzag.ch1.ioc.dao.impl.UserDaoImpl;
 import org.springframework.beans.factory.FactoryBean;
 
 /**

@@ -1,5 +1,6 @@
-package com.zigzag.ch1.test01;
+package com.zigzag.ch1.ioc.dao.impl;
 
+import com.zigzag.ch1.ioc.dao.UserDao;
 import org.springframework.beans.factory.InitializingBean;
 
 import java.util.List;
@@ -12,14 +13,20 @@ public class UserDaoImpl implements UserDao, InitializingBean {
     private String name;
 
     public UserDaoImpl() {
+        System.out.println("UserDaoImpl无参构造器方法");
     }
 
     public UserDaoImpl(String name) {
+        System.out.println("UserDaoImpl有参构造器方法");
+        this.name = name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
     public void init() {
-        System.out.println("初始化方法");
+        System.out.println("init初始化方法");
     }
 
     public void destroy() {
@@ -28,10 +35,16 @@ public class UserDaoImpl implements UserDao, InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("执行时机早于 init-method");
+        System.out.println("执行时机早于 init-method,afterPropertiesSet:属性注入后执行");
     }
 
+    // 对应set方法,为strList注入值
     public void setStrList(List<String> strList) {
         strList.forEach(System.out::println);
+    }
+
+    @Override
+    public void showTimeLog() {
+        System.out.println("show方法执行");
     }
 }

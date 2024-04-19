@@ -1,4 +1,6 @@
-package com.zigzag.ch1.test01;
+package com.zigzag.ch1.ioc.service;
+
+import com.zigzag.ch1.ioc.dao.UserDao;
 
 /**
  * @author qlk

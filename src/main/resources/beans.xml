@@ -3,12 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="userDao" class="com.zigzag.ch1.test01.UserDaoImpl">
-        <property name="strList">
-            <list>
-                <value>haohao</value>
-                <value>miaomiao</value>
-            </list>
-        </property>
+    <bean id="userDao" class="com.zigzag.ch1.ioc.dao.impl.UserDaoImpl" init-method="init">
+        <property name="name" value="坏坏" />
     </bean>
+
+<!--    <bean class="com.zigzag.ch1.ioc.processor.MyBeanFactoryPostProcessor" />-->
+<!--    <bean class="com.zigzag.ch1.ioc.processor.MyBeanFactoryPostProcessor2" />-->
+<!--    <bean class="com.zigzag.ch1.ioc.processor.MyComponentBeanFactoryPostProcessor" />-->
+
+    <bean class="com.zigzag.ch1.ioc.processor.MyBeanPostProcessor" />
+    <bean class="com.zigzag.ch1.ioc.processor.TimeLogBeanPostProcessor" />
 </beans>

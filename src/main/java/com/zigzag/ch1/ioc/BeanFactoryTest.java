@@ -1,5 +1,7 @@
-package com.zigzag.ch1.test01;
+package com.zigzag.ch1.ioc;
 
+import com.zigzag.ch1.ioc.service.UserService;
+import com.zigzag.ch1.ioc.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
@@ -23,4 +25,5 @@ public class BeanFactoryTest {
         //userDao = com.zigzag.ch1.test01.UserDaoImpl@42d3bd8b
         //userService = com.zigzag.ch1.test01.UserServiceImpl@26ba2a48
     }
+
 }
