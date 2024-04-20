@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:haohao="http://www.zigzag.com/haohao"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.zigzag.com/haohao
+       http://www.zigzag.com/haohao/haohao-annotation.xsd">
 
-    <bean id="userDao" class="com.zigzag.ch1.ioc.dao.impl.UserDaoImpl" init-method="init">
-        <property name="name" value="坏坏" />
+    <!--    <bean id="userDao" class="com.zigzag.ch1.ioc.dao.impl.UserDaoImpl" init-method="init">-->
+    <!--        <property name="name" value="坏坏" />-->
+    <!--    </bean>-->
+
+    <bean id="userService" class="com.zigzag.ch1.ioc.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
     </bean>
 
-<!--    <bean class="com.zigzag.ch1.ioc.processor.MyBeanFactoryPostProcessor" />-->
-<!--    <bean class="com.zigzag.ch1.ioc.processor.MyBeanFactoryPostProcessor2" />-->
-<!--    <bean class="com.zigzag.ch1.ioc.processor.MyComponentBeanFactoryPostProcessor" />-->
+    <bean id="userDao" class="com.zigzag.ch1.ioc.dao.impl.UserDaoImpl">
+        <property name="name" value="坏坏"/>
+    </bean>
 
-    <bean class="com.zigzag.ch1.ioc.processor.MyBeanPostProcessor" />
-    <bean class="com.zigzag.ch1.ioc.processor.TimeLogBeanPostProcessor" />
+    <!--    <bean class="com.zigzag.ch1.ioc.processor.MyBeanFactoryPostProcessor" />-->
+    <!--    <bean class="com.zigzag.ch1.ioc.processor.MyBeanFactoryPostProcessor2" />-->
+    <!--    <bean class="com.zigzag.ch1.ioc.processor.MyComponentBeanFactoryPostProcessor" />-->
+
+    <!--    <bean class="com.zigzag.ch1.ioc.processor.MyBeanPostProcessor" />-->
+    <!--    <bean class="com.zigzag.ch1.ioc.processor.TimeLogBeanPostProcessor" />-->
+
+    <!--自定义命名空间的标签-->
+    <haohao:annotation-driven></haohao:annotation-driven>
 </beans>

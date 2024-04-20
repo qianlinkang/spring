@@ -8,8 +8,14 @@ import com.zigzag.ch1.ioc.service.UserService;
  */
 public class UserServiceImpl implements UserService {
 
-    @Override
+    private UserDao userDao;
+
+    public UserServiceImpl() {
+        System.out.println("UserServiceImpl无参构造器方法");
+    }
+
     public void setUserDao(UserDao userDao) {
-        System.out.println("userDao = " + userDao);
+        this.userDao = userDao;
+        System.out.println("UserServiceImpl执行注入userDao: setUserDao()");
     }
 }

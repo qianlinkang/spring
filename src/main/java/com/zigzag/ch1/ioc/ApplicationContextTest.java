@@ -2,6 +2,7 @@ package com.zigzag.ch1.ioc;
 
 import com.zigzag.ch1.ioc.dao.UserDao;
 import com.zigzag.ch1.ioc.dao.impl.UserDaoImpl;
+import com.zigzag.ch1.ioc.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -35,7 +36,10 @@ public class ApplicationContextTest {
 //        UserDaoImpl bean = context.getBean(UserDaoImpl.class);
 //        System.out.println("bean = " + bean);
 
-        UserDao userDao = (UserDao) context.getBean("userDao");
-        userDao.showTimeLog();
+//        UserDao userDao = (UserDao) context.getBean("userDao");
+//        userDao.showTimeLog();
+
+        UserService userService = (UserService) context.getBean("userService");
+        System.out.println("userService = " + userService);
     }
 }

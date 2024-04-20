@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns="http://www.zigzag.com/haohao"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.zigzag.com/haohao">
+
+    <xsd:element name="annotation-driven" />
+
+</xsd:schema>
