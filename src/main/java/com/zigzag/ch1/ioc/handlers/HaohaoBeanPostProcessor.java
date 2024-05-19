@@ -1,4 +1,4 @@
-package com.zigzag.ch1.handlers;
+package com.zigzag.ch1.ioc.handlers;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

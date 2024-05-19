@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="com.zigzag.ch1.aop.service.impl" />
+
+    <!--配置目标类,内部的方法是连接点-->
+    <bean id="userService" class="com.zigzag.ch1.aop.service.impl.UserServiceImpl" init-method="init" />
+    <!--配置通知类,内部的方法是增强方法-->
+    <bean id="myAdvice" class="com.zigzag.ch1.aop.MyAdvice" />
+
+
+
+
+<!--    <bean class="com.zigzag.ch1.aop.MyAdviceMockAopBeanPostProcessor" />-->
+
+    <aop:config>
+        <!--配置切点表达式,对哪些方法进行增强-->
+        <aop:pointcut id="myPointcut" expression="execution(void com.zigzag.ch1.aop.service.impl.UserServiceImpl.show1())"/>
+        <!--切面=切点+通知-->
+        <aop:aspect ref="myAdvice">
+            <!--指定前置通知方法是beforeAdvice-->
+            <aop:before method="beforeAdvice" pointcut-ref="myPointcut"/>
+            <!--指定后置通知方法是afterAdvice-->
+            <aop:after-returning method="afterAdvice" pointcut-ref="myPointcut"/>
+            <!--环绕通知-->
+            <aop:around method="around" pointcut-ref="myPointcut"/>
+            <!--异常-->
+            <aop:after-throwing method="afterThrowing" pointcut-ref="myPointcut" throwing="th"/>
+            <!--最终都会执行-->
+            <aop:after method="after" pointcut-ref="myPointcut"/>
+        </aop:aspect>
+    </aop:config>
+
+    <!--配置通知类-->
+    <bean id="advices" class="com.zigzag.ch1.aop.Advices" />
+
+    <!--使用advisor配置方式-->
+    <aop:config>
+        <!--切面-->
+        <aop:advisor advice-ref="advices" pointcut="execution(void com.zigzag.ch1.aop.service.impl.UserServiceImpl.show2())"/>
+    </aop:config>
+</beans>
