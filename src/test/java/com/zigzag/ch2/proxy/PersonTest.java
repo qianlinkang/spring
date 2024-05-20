@@ -1,8 +1,8 @@
 package com.zigzag.ch2.proxy;
 
 
-import com.zigzag.ch2.proxy.satic.demo1.Father;
-import com.zigzag.ch2.proxy.satic.demo1.Son;
+import com.zigzag.proxy.satic.demo1.Father;
+import com.zigzag.proxy.satic.demo1.Son;
 import org.junit.Test;
 
 /**

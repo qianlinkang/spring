@@ -1,12 +1,13 @@
 package com.zigzag.ch2.proxy.satic.demo2;
 
+import com.zigzag.proxy.satic.demo2.Order;
+import com.zigzag.proxy.satic.demo2.OrderServiceImpl;
+import com.zigzag.proxy.satic.demo2.OrderServiceProxy;
 import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * @author qlk

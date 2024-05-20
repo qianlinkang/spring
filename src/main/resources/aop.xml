@@ -7,12 +7,12 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <context:component-scan base-package="com.zigzag.ch1.aop.service.impl" />
+    <context:component-scan base-package="com.zigzag.aop.service.impl" />
 
     <!--配置目标类,内部的方法是连接点-->
-    <bean id="userService" class="com.zigzag.ch1.aop.service.impl.UserServiceImpl" init-method="init" />
+    <bean id="userService" class="com.zigzag.aop.service.impl.UserServiceImpl" init-method="init" />
     <!--配置通知类,内部的方法是增强方法-->
-    <bean id="myAdvice" class="com.zigzag.ch1.aop.MyAdvice" />
+    <bean id="myAdvice" class="com.zigzag.aop.MyAdvice" />
 
 
 
@@ -21,7 +21,7 @@
 
     <aop:config>
         <!--配置切点表达式,对哪些方法进行增强-->
-        <aop:pointcut id="myPointcut" expression="execution(void com.zigzag.ch1.aop.service.impl.UserServiceImpl.show1())"/>
+        <aop:pointcut id="myPointcut" expression="execution(void com.zigzag.aop.service.impl.UserServiceImpl.show1())"/>
         <!--切面=切点+通知-->
         <aop:aspect ref="myAdvice">
             <!--指定前置通知方法是beforeAdvice-->
@@ -38,11 +38,12 @@
     </aop:config>
 
     <!--配置通知类-->
-    <bean id="advices" class="com.zigzag.ch1.aop.Advices" />
+    <bean id="advices" class="com.zigzag.aop.Advices" />
 
     <!--使用advisor配置方式-->
     <aop:config>
         <!--切面-->
-        <aop:advisor advice-ref="advices" pointcut="execution(void com.zigzag.ch1.aop.service.impl.UserServiceImpl.show2())"/>
+        <aop:advisor advice-ref="advices" pointcut="execution(void com.zigzag.aop.service.impl.UserServiceImpl.show2())"/>
     </aop:config>
+
 </beans>
